@@ -1,0 +1,27 @@
+body {
+  background-color: #f2f3f6;
+  font-family: "Verdana", sans-serif;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  text-align: left;
+  padding-left: 20px; /* keeps title aligned with legend */
+}
+
+/* container for legend + map */
+.map-container {
+  display: flex;
+  justify-content: center;   /* centers the whole block */
+  align-items: flex-start;
+  gap: 30px;                 /* space between legend and map */
+  width: 100%;
+}
+
+/* legend styling */
+#legend {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

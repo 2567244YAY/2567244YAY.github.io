@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Reptile Map </title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Toggle layers</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css" rel="stylesheet">
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css" />
+</head>
+
+<body>
+<div id="welcome-modal" class="welcome-modal">
+  <div class="welcome-content">
+
+    <h2>Welcome to Reptiles in North East Scotland</h2>
+
+    <p>
+      This interactive map visualises verified reptile sightings across North East Scotland 
+      between 2005 and 2025. It allows you to explore how species may be distributed across the region, 
+      how patterns change over time, and where reptile activity is most concentrated.
+    </p>
+
+    <h3>How to explore the map</h3>
+    <ul>
+      <li>Use the <strong>Species Filters</strong> to show or hide individual reptile species.</li>
+      <li>Adjust the <strong>Year Slider</strong> to explore how sightings change through time.</li>
+      <li>Toggle the <strong>Heatmap</strong> to reveal hotspots and areas of higher reptile activity.</li>
+      <li>View the <strong>Species Density Widget</strong> on the right to see real‑time counts of visible species based on your filters and selected year.</li>
+      <li>Hover over a point to see a <strong>species photo</strong> and quick details.</li>
+      <li>Click a point to view the <strong>full record information</strong>, including locality and taxonomy.</li>
+      <li>Use the <strong>search bar</strong> to locate places across the region.</li>
+      <li>Close (🦎), hide (🐍) and open (🐢) the side panels to focus on the map or explore additional information and features.</li>
+    </ul>
+
+    <p class="welcome-tip">
+      <em>Tip: Combine the heatmap, species filters, and year slider to reveal ecological patterns, 
+      hotspots, and unusual sightings across the landscape.</em>
+    </p>
+
+    <button id="welcome-close" class="welcome-button">Explore the Map</button>
+
+  </div>
+</div>
+
+<div id="map"></div>
+
+<!-- Transparent overlay (keeps logic, no greyscale) -->
+<div id="overlay" class="overlay hidden"></div>
+
+<!-- FLOATING PANELS BUTTON -->
+<button id="panels-button" class="panels-button"> 🐢 Expand Panels</button>
+
+<!-- CONSOLE PANEL -->
+<div id="console" class="side-panel">
+  <button class="panel-close" id="console-close">🦎</button>
+  <h2>Reptile's in North East Scotland</h2>
+  <p>Data: <a href='https://registry.nbnatlas.org/public/show/dp58'>Reptile Data</a> from Amphibian and Reptile Conservation focusing on the North East of Scotland records, 2005 - 2025</p>
+</div>
+  
+
+<!-- LEGEND + FILTERS WRAPPER -->
+<div id="legend-filters-wrapper" class="side-panel">
+
+  <!-- FILTERS TOGGLE -->
+  <div id="filters-toggle" class="filters-toggle">
+    <span class="snake-icon">🐍</span> Species Filters
+  </div>
+
+  <!-- SELECT/DESELECT BUTTONS -->
+  <div id="filter-buttons" class="filter-buttons">
+    <button id="select-all">Select All</button>
+    <button id="deselect-all">Deselect All</button>
+  </div>
+
+  <!-- FILTER LIST -->
+  <div id="filters-panel" class="side-panel">
+    <button class="panel-close" id="filters-close">🦎</button>
+    <div id="filters" class="filters"></div>
+  </div>
+
+  <!-- LEGEND TOGGLE -->
+  <div id="legend-toggle" class="legend-toggle">
+    <span class="snake-icon">🐍</span> Legend
+  </div>
+ 
+   <!-- LEGEND CONTENT -->
+  <div id="legend-content" class="side-panel">
+    <button id="legend-close" class="panel-close">🦎</button>
+    <p>Drag the slider to see specific records throughout the years or click and unclick species filters to look at the distribution over time.</p>
+
+    <div class='session' id='sliderbar'>
+  <h2>Year: <label id='active-year'>2025</label></h2>
+  <input id='slider' type='range' min='2004' max='2025' step='1' value='2025' />
+      <h2>Heat Map</h2>
+      <p> Use the heat map toggle to see how spatial distrubtion of the reptile species changes from year to year and where the hotspots are in North East Scotland. </p> 
+  <button id="toggle-heatmap" class="heatmap-button">Heatmap On/Off</button><div class="heatmap-legend">
+  <div><span style="background:#253494"></span> Very High</div>
+  <div><span style="background:#2c7fb8"></span> High</div>
+  <div><span style="background:#41b6c4"></span> Medium</div>
+  <div><span style="background:#a1dab4"></span> Low</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+  
+  <div id="density-widget" class="density-widget">
+  <h3>Species Density</h3>
+    <button id="density-close" class="panel-close">🦎</button>
+  <div id="density-content"></div>
+</div>
+
+<div id="pd">
+  <button id="pd-close" class="panel-close">🦎</button>
+  Hover over a data point and find out more!
+</div>
+
+  <button id="help-button" class="help-button">❓ Help</button>
+  
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
